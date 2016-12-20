@@ -1,8 +1,8 @@
-FROM alpine:3.3
-MAINTAINER tgraf@noironetworks.com
+FROM fedora:23
+MAINTAINER tgraf@tgraf.ch
 
 RUN \
-	apk add --update bash iproute2 iputils tcpdump && \
-	rm -rf /var/cache/apk/*
+	dnf -y install curl iproute iputils tcpdump strace && \
+	dnf clean all
 
 CMD ["/bin/bash"]
