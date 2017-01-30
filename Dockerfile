@@ -9,6 +9,8 @@ RUN \
 	rm -rf netperf-2.7.0 netperf-2.7.0.tar.gz && \
 	rm -f /usr/share/info/netperf.info && \
 	strip -s /usr/bin/netperf /usr/bin/netserver && \
+	curl https://raw.githubusercontent.com/borkmann/stuff/master/super_netperf > /usr/bin/super_netperf && \
+	chmod +x /usr/bin/super_netperf && \
 	dnf clean all
 
 CMD ["/bin/bash"]
