@@ -1,5 +1,5 @@
 FROM fedora:25
-MAINTAINER tgraf@tgraf.ch
+LABEL maintainer tgraf@tgraf.ch
 
 RUN \
 	dnf -y install curl iproute iputils tcpdump strace ethtool gcc git perf tar && \
@@ -12,6 +12,7 @@ RUN \
 	strip -s /usr/bin/netperf /usr/bin/netserver && \
 	curl https://raw.githubusercontent.com/borkmann/stuff/master/super_netperf > /usr/bin/super_netperf && \
 	chmod +x /usr/bin/super_netperf && \
+	setcap cap_net_raw+ep /usr/bin/ping && \
 	dnf clean all
 
 CMD ["/bin/bash"]
